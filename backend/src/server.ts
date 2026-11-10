@@ -1,6 +1,6 @@
 import cors from "cors";
 import express, { type ErrorRequestHandler } from "express";
-import { findAllPizzas } from "./pizzas.js";
+import { findAllPizzas, findPizzaById } from "./pizzas.js";
 
 const PORT = 8080;
 
@@ -15,7 +15,16 @@ app.get("/api/pizzas", (request, response) => {
   response.json(findAllPizzas());
 });
 
-// 👉 Étape 1 : GET /api/pizzas/:id
+app.get("/api/pizzas/:id", (request, response) => {
+  try {
+    let pizza = findPizzaById(Number(request.params.id));
+    response.json(pizza);
+  }
+  catch (e) {
+    response.status(404).json({ error: `Route inconnue : ${request.originalUrl}` });
+  }
+})
+
 // 👉 Étape 2 : POST, PUT et DELETE sur /api/pizzas
 // 👉 Étape 4 : POST /api/orders
 

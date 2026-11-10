@@ -14,7 +14,11 @@ export function findAllPizzas(): Pizza[] {
   return store.all();
 }
 
-// 👉 Étape 1 : findPizzaById(id) — renvoie la pizza ou undefined
+export function findPizzaById(id : number): Pizza {
+    let pizza = store.all().find(pizza => pizza.id === id)
+    if (pizza === undefined ) throw Error; 
+    return pizza;
+}
 
 // 👉 Étape 2 : createPizza / updatePizza / deletePizza
 //    Pensez à appeler store.save(...) pour persister vos changements.
