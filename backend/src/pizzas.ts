@@ -15,9 +15,15 @@ export function findAllPizzas(): Pizza[] {
 }
 
 export function findPizzaById(id : number): Pizza {
-    let pizza = store.all().find(pizza => pizza.id === id)
-    if (pizza === undefined ) throw Error; 
-    return pizza;
+  let pizza = store.all().find(pizza => pizza.id === id)
+  if (pizza === undefined ) throw Error; 
+  return pizza;
+}
+
+export function findPizzaByName(name:string): Pizza {
+  let pizza = store.all().find(pizza => pizza.name.includes(name))
+  if (pizza === undefined ) throw Error; 
+  return pizza;
 }
 
 // 👉 Étape 2 : createPizza / updatePizza / deletePizza
