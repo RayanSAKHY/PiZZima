@@ -25,7 +25,7 @@ app.get("/api/pizzas/:id", (request, response) => {
   }
 })
 
-app.get("/api/pizzas?search=name", (request, response) => {
+app.get("/api/pizzas", (request, response) => {
   try {
     let pizza = findPizzaByName(String(request.query.search));
     response.status(400).json(pizza);
