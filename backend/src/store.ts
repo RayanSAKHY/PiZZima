@@ -17,6 +17,10 @@ export function createStore<T>(fileName: string) {
       return items;
     },
 
+    empty() : Boolean {
+      return items.length === 0;
+    },
+
     /** Remplace le contenu du store et l'écrit sur le disque. */
     save(next: T[]): void {
       items = next;
